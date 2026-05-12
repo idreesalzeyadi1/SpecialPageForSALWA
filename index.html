@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Salwa Hussain 🌸</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300;1,600&family=DM+Sans:wght@300;400;500&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --pink:#f472b6;
+  --pink-light:#fce7f3;
+  --pink-deep:#be185d;
+  --pink-soft:#fbcfe8;
+  --gold:#f9a825;
+}
+html{scroll-behavior:smooth;}
+body{
+  background:#0d0308;
+  color:#fff;
+  font-family:'DM Sans',sans-serif;
+  overflow-x:hidden;
+}
+.cursor{width:12px;height:12px;background:var(--pink);border-radius:50%;position:fixed;pointer-events:none;z-index:9999;transition:transform 0.15s;mix-blend-mode:screen;}
+.cursor-trail{width:30px;height:30px;border:1px solid rgba(244,114,182,0.4);border-radius:50%;position:fixed;pointer-events:none;z-index:9998;transition:all 0.08s;}
+#particles{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;}
+.p{position:absolute;border-radius:50%;opacity:0;animation:rise linear infinite;}
+@keyframes rise{0%{transform:translateY(100vh) scale(0);opacity:0;}10%{opacity:0.8;}90%{opacity:0.3;}100%{transform:translateY(-10vh) scale(1.2);opacity:0;}}
+
+/* HERO */
+.hero{position:relative;z-index:2;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 20px;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(244,114,182,0.18) 0%,transparent 70%),radial-gradient(ellipse 40% 40% at 20% 80%,rgba(190,24,93,0.12) 0%,transparent 60%),radial-gradient(ellipse 40% 40% at 80% 10%,rgba(249,168,37,0.08) 0%,transparent 60%);}
+.hero-ring{position:absolute;border-radius:50%;border:1px solid rgba(244,114,182,0.12);animation:ringPulse 4s ease-in-out infinite;}
+@keyframes ringPulse{0%,100%{opacity:0.3;}50%{opacity:0.7;}}
+.crown{font-size:36px;animation:float 3s ease-in-out infinite;margin-bottom:16px;display:block;filter:drop-shadow(0 0 20px rgba(249,168,37,0.6));}
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+.hero-name{font-family:'Cormorant Garamond',serif;font-size:clamp(64px,14vw,140px);font-weight:600;line-height:0.95;background:linear-gradient(135deg,#fce7f3 0%,#f472b6 40%,#be185d 70%,#f9a825 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:nameIn 1.8s cubic-bezier(0.16,1,0.3,1) forwards;opacity:0;transform:translateY(60px) scale(0.9);letter-spacing:-2px;}
+@keyframes nameIn{to{opacity:1;transform:translateY(0) scale(1);}}
+.hero-name-2{font-family:'Cormorant Garamond',serif;font-size:clamp(30px,6vw,60px);font-weight:300;font-style:italic;color:rgba(244,114,182,0.7);animation:nameIn 1.8s 0.3s cubic-bezier(0.16,1,0.3,1) forwards;opacity:0;transform:translateY(40px);letter-spacing:6px;margin-bottom:28px;}
+.hero-tagline{font-family:'Dancing Script',cursive;font-size:clamp(18px,4vw,26px);color:rgba(255,255,255,0.6);animation:fadeUp 2s 1s forwards;opacity:0;transform:translateY(20px);margin-bottom:50px;}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0);}}
+.scroll-hint{animation:fadeUp 2s 1.5s forwards,bounce 2s 3.5s ease-in-out infinite;opacity:0;font-size:13px;letter-spacing:4px;color:rgba(244,114,182,0.5);text-transform:uppercase;}
+@keyframes bounce{0%,100%{transform:translateY(0);}50%{transform:translateY(6px);}}
+
+/* SECTIONS */
+section{position:relative;z-index:2;padding:80px 20px;}
+.sec-label{font-size:11px;letter-spacing:5px;color:var(--pink);text-transform:uppercase;margin-bottom:12px;display:block;}
+.sec-title{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,6vw,56px);font-weight:600;line-height:1.1;margin-bottom:40px;}
+
+/* MEMORIES */
+.memories-section{max-width:1000px;margin:0 auto;}
+.slideshow-wrap{position:relative;width:100%;height:clamp(300px,55vw,520px);border-radius:24px;overflow:hidden;box-shadow:0 0 80px rgba(244,114,182,0.3),0 0 160px rgba(244,114,182,0.1);}
+.mem-slide{position:absolute;inset:0;opacity:0;transition:opacity 1s ease,transform 1.2s cubic-bezier(0.16,1,0.3,1);transform:scale(1.05);}
+.mem-slide.active{opacity:1;transform:scale(1);}
+.mem-slide-inner{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:clamp(60px,12vw,100px);position:relative;}
+.mem-slide-1{background:linear-gradient(135deg,#1a0010,#3d0030,#1a0010);}
+.mem-slide-2{background:linear-gradient(135deg,#0d0010,#2d0035,#0d0010);}
+.mem-slide-3{background:linear-gradient(135deg,#1a0808,#3d1020,#1a0808);}
+.mem-slide-4{background:linear-gradient(135deg,#0a0a1a,#1a0a30,#0a0a1a);}
+.mem-slide img{width:100%;height:100%;object-fit:cover;}
+.mem-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(13,3,8,0.8) 0%,transparent 50%);}
+.mem-caption{position:absolute;bottom:24px;left:28px;right:100px;font-family:'Cormorant Garamond',serif;font-size:20px;font-style:italic;color:rgba(255,255,255,0.8);}
+.mem-nav{position:absolute;bottom:24px;right:28px;display:flex;gap:8px;align-items:center;}
+.mem-dot{width:8px;height:8px;border-radius:50%;background:rgba(244,114,182,0.3);cursor:pointer;transition:all 0.3s;border:none;}
+.mem-dot.active{background:var(--pink);width:24px;border-radius:4px;}
+.mem-arrows{position:absolute;top:50%;transform:translateY(-50%);width:100%;display:flex;justify-content:space-between;padding:0 16px;pointer-events:none;}
+.mem-arrow{width:44px;height:44px;border-radius:50%;background:rgba(244,114,182,0.15);border:1px solid rgba(244,114,182,0.3);color:#fff;font-size:22px;cursor:pointer;pointer-events:all;display:flex;align-items:center;justify-content:center;transition:all 0.3s;backdrop-filter:blur(8px);}
+.mem-arrow:hover{background:rgba(244,114,182,0.35);transform:scale(1.1);}
+
+/* VIDEOS */
+.videos-section{max-width:900px;margin:0 auto;text-align:center;}
+.videos-grid{display:flex;flex-wrap:wrap;gap:28px;justify-content:center;margin-top:10px;}
+.vid-item{display:flex;flex-direction:column;align-items:center;}
+.video-circle{width:140px;height:140px;border-radius:50%;border:3px solid rgba(244,114,182,0.4);overflow:hidden;cursor:pointer;position:relative;transition:all 0.4s cubic-bezier(0.16,1,0.3,1);box-shadow:0 0 30px rgba(244,114,182,0.2);}
+.video-circle:hover{transform:scale(1.12);border-color:var(--pink);box-shadow:0 0 50px rgba(244,114,182,0.5);}
+.video-circle-inner{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-size:38px;}
+.vid-bg-1{background:linear-gradient(135deg,#1a0010,#3d0030);}
+.vid-bg-2{background:linear-gradient(135deg,#0d001a,#2d0040);}
+.vid-bg-3{background:linear-gradient(135deg,#1a0010,#4d1030);}
+.vid-bg-4{background:linear-gradient(135deg,#0a0a20,#200a40);}
+.play-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.3);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.3s;}
+.video-circle:hover .play-overlay{opacity:1;}
+.play-icon{width:40px;height:40px;border-radius:50%;background:rgba(244,114,182,0.9);display:flex;align-items:center;justify-content:center;font-size:16px;}
+.vid-label{font-size:12px;color:rgba(255,255,255,0.5);margin-top:10px;letter-spacing:1px;}
+.vid-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.96);z-index:1000;align-items:center;justify-content:center;}
+.vid-modal.open{display:flex;}
+.vid-modal video{max-width:90vw;max-height:80vh;border-radius:16px;border:1px solid rgba(244,114,182,0.3);}
+.vid-close{position:absolute;top:24px;right:24px;font-size:28px;cursor:pointer;color:rgba(255,255,255,0.7);background:none;border:none;transition:color 0.2s;}
+.vid-close:hover{color:var(--pink);}
+
+/* ABOUT */
+.about-section{max-width:800px;margin:0 auto;}
+.about-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:10px;}
+.about-card{background:rgba(244,114,182,0.05);border:1px solid rgba(244,114,182,0.15);border-radius:20px;padding:28px 24px;transition:all 0.5s;opacity:0;transform:translateY(30px);}
+.about-card.visible{opacity:1;transform:translateY(0);}
+.about-card:hover{background:rgba(244,114,182,0.1);border-color:rgba(244,114,182,0.4);transform:translateY(-4px);box-shadow:0 20px 40px rgba(244,114,182,0.15);}
+.about-card-icon{font-size:32px;margin-bottom:12px;display:block;}
+.about-card-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:#fbcfe8;margin-bottom:8px;}
+.about-card-text{font-size:14px;line-height:1.7;color:rgba(255,255,255,0.55);}
+
+/* SURPRISE BTN */
+.surprise-section{text-align:center;padding:60px 20px 100px;position:relative;z-index:2;}
+.surprise-btn{position:relative;display:inline-block;padding:20px 56px;font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;color:#fff;background:linear-gradient(135deg,#be185d,#f472b6,#be185d);background-size:200% 200%;border:none;border-radius:60px;cursor:pointer;animation:gradShift 3s ease infinite;box-shadow:0 0 40px rgba(244,114,182,0.4),0 0 80px rgba(244,114,182,0.2);transition:transform 0.3s,box-shadow 0.3s;letter-spacing:1px;}
+.surprise-btn:hover{transform:scale(1.06);box-shadow:0 0 60px rgba(244,114,182,0.7),0 0 120px rgba(244,114,182,0.3);}
+@keyframes gradShift{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
+.surprise-hint{display:block;margin-top:16px;font-size:12px;letter-spacing:3px;color:rgba(255,255,255,0.3);text-transform:uppercase;}
+
+/* SURPRISE PAGE */
+#surprisePage{display:none;position:fixed;inset:0;z-index:2000;background:#0d0308;overflow-y:auto;animation:pageIn 0.8s cubic-bezier(0.16,1,0.3,1);}
+#surprisePage.open{display:block;}
+@keyframes pageIn{from{opacity:0;transform:scale(0.95);}to{opacity:1;transform:scale(1);}}
+.sp-particles{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;}
+.sp-close{position:fixed;top:24px;right:24px;z-index:10;width:44px;height:44px;border-radius:50%;background:rgba(244,114,182,0.15);border:1px solid rgba(244,114,182,0.3);color:#fff;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.3s;}
+.sp-close:hover{background:rgba(244,114,182,0.3);transform:rotate(90deg);}
+.sp-inner{position:relative;z-index:2;max-width:680px;margin:0 auto;padding:80px 28px 100px;text-align:center;}
+.sp-bloom{font-size:60px;animation:float 3s ease-in-out infinite;display:block;margin-bottom:24px;}
+.sp-for{font-size:12px;letter-spacing:5px;color:rgba(244,114,182,0.6);text-transform:uppercase;margin-bottom:8px;}
+.sp-heading{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,8vw,64px);font-weight:600;font-style:italic;background:linear-gradient(135deg,#fce7f3,#f472b6,#be185d);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:48px;line-height:1.1;}
+.sp-divider{width:80px;height:1px;background:linear-gradient(90deg,transparent,var(--pink),transparent);margin:40px auto;}
+.sp-poem{font-family:'Cormorant Garamond',serif;font-size:clamp(18px,4vw,24px);font-style:italic;line-height:2.1;color:rgba(255,255,255,0.85);margin-bottom:24px;}
+.sp-poem span{display:block;opacity:0;transform:translateY(16px);transition:all 0.7s cubic-bezier(0.16,1,0.3,1);}
+.sp-poem span.show{opacity:1;transform:translateY(0);}
+.sp-poem-pink{color:#fbcfe8;}
+.sp-message-box{background:rgba(244,114,182,0.06);border:1px solid rgba(244,114,182,0.2);border-radius:24px;padding:36px 32px;margin:40px 0;text-align:left;}
+.sp-msg-label{font-size:10px;letter-spacing:4px;color:var(--pink);text-transform:uppercase;margin-bottom:16px;display:block;}
+.sp-msg-text{font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.9;color:rgba(255,255,255,0.75);}
+.sp-footer-name{font-family:'Dancing Script',cursive;font-size:40px;color:#fbcfe8;margin-top:40px;}
+.sp-hearts{font-size:24px;margin-top:16px;animation:float 2s ease-in-out infinite;}
+
+/* CONFETTI */
+.confetti-piece{position:fixed;opacity:0;animation:confettiFall linear forwards;pointer-events:none;z-index:3000;}
+@keyframes confettiFall{0%{transform:translateY(-20px) rotate(0deg);opacity:1;}100%{transform:translateY(100vh) rotate(720deg);opacity:0;}}
+
+footer{position:relative;z-index:2;text-align:center;padding:40px 20px 60px;border-top:1px solid rgba(244,114,182,0.1);}
+.footer-name{font-family:'Cormorant Garamond',serif;font-size:20px;font-style:italic;color:rgba(244,114,182,0.4);letter-spacing:4px;}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-trail" id="cursorTrail"></div>
+<div id="particles"></div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-ring" style="width:500px;height:500px;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);border-radius:50%;"></div>
+  <div class="hero-ring" style="width:750px;height:750px;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);border-radius:50%;animation-delay:1.3s;"></div>
+  <span class="crown">👑</span>
+  <h1 class="hero-name">SALWA</h1>
+  <h2 class="hero-name-2">H u s s a i n</h2>
+  <p class="hero-tagline">"Some people are just made of magic ✨"</p>
+  <p class="scroll-hint">↓ scroll to explore ↓</p>
+</section>
+
+<!-- MEMORIES -->
+<section>
+  <div class="memories-section">
+    <span class="sec-label">Her World</span>
+    <h2 class="sec-title">Memories 🌸</h2>
+    <div class="slideshow-wrap">
+      <div class="mem-slide mem-slide-1 active">
+        <img src="1.jpg" alt="Memory 1">
+        <div class="mem-overlay"></div>
+        <div class="mem-caption">✨ Memory 1</div>
+      </div>
+      <div class="mem-slide mem-slide-2">
+        <img src="2s.jpeg" alt="Memory 2">
+        <div class="mem-overlay"></div>
+        <div class="mem-caption">🌸 Memory 2</div>
+      </div>
+      <div class="mem-slide mem-slide-3">
+        <img src="3s.jpeg" alt="Memory 3">
+        <div class="mem-overlay"></div>
+        <div class="mem-caption">💫 Memory 3</div>
+      </div>
+      <div class="mem-slide mem-slide-4">
+        <img src="4s.jpeg" alt="Memory 4">
+        <div class="mem-overlay"></div>
+        <div class="mem-caption">💖 Memory 4</div>
+      </div>
+      <div class="mem-slide mem-slide-1">
+        <img src="5s.jpeg" alt="Memory 5">
+        <div class="mem-overlay"></div>
+        <div class="mem-caption">🌺 Memory 5</div>
+      </div>
+      <div class="mem-slide mem-slide-2">
+        <img src="7s.jpeg" alt="Memory 6">
+        <div class="mem-overlay"></div>
+        <div class="mem-caption">⭐ Memory 6</div>
+      </div>
+      <div class="mem-slide mem-slide-3">
+        <img src="8s.jpeg" alt="Memory 7">
+        <div class="mem-overlay"></div>
+        <div class="mem-caption">🌙 Memory 7</div>
+      </div>
+      <div class="mem-slide mem-slide-4">
+        <img src="9s.jpeg" alt="Memory 8">
+        <div class="mem-overlay"></div>
+        <div class="mem-caption">✨ Memory 8</div>
+      </div>
+      <div class="mem-slide mem-slide-1">
+        <img src="10s.jpeg" alt="Memory 9">
+        <div class="mem-overlay"></div>
+        <div class="mem-caption">🌸 Memory 9</div>
+      </div>
+      <div class="mem-slide mem-slide-2">
+        <img src="11s.jpeg" alt="Memory 10">
+        <div class="mem-overlay"></div>
+        <div class="mem-caption">💫 Memory 10</div>
+      </div>
+      <div class="mem-slide mem-slide-3">
+        <img src="13s.jpeg" alt="Memory 11">
+        <div class="mem-overlay"></div>
+        <div class="mem-caption">💖 Memory 11</div>
+      </div>
+      <div class="mem-slide mem-slide-4">
+        <img src="14s.jpeg" alt="Memory 12">
+        <div class="mem-overlay"></div>
+        <div class="mem-caption">👑 Memory 12</div>
+      </div>
+      <div class="mem-arrows">
+        <button class="mem-arrow" onclick="changeSlide(-1)">‹</button>
+        <button class="mem-arrow" onclick="changeSlide(1)">›</button>
+      </div>
+      <div class="mem-nav" id="memNav"></div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEOS -->
+<section>
+  <div class="videos-section">
+    <span class="sec-label">Moments in Motion</span>
+    <h2 class="sec-title">Videos 🎬</h2>
+    <div class="videos-grid">
+      <div class="vid-item">
+        <div class="video-circle" onclick="openVideo('videos/video.mp4')" style="border-color:rgba(244,114,182,0.5);">
+          <video src="videos/video.mp4" muted playsinline preload="metadata" style="width:100%;height:100%;object-fit:cover;pointer-events:none;" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0;"></video>
+          <div class="play-overlay"><div class="play-icon">▶</div></div>
+        </div>
+        <p class="vid-label">Video 1</p>
+      </div>
+      <div class="vid-item">
+        <div class="video-circle" onclick="openVideo('videos/video2.mp4')" style="border-color:rgba(244,114,182,0.5);">
+          <video src="videos/video2.mp4" muted playsinline preload="metadata" style="width:100%;height:100%;object-fit:cover;pointer-events:none;" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0;"></video>
+          <div class="play-overlay"><div class="play-icon">▶</div></div>
+        </div>
+        <p class="vid-label">Video 2</p>
+      </div>
+      <div class="vid-item">
+        <div class="video-circle" onclick="openVideo('videos/video3.mp4')" style="border-color:rgba(244,114,182,0.5);">
+          <video src="videos/video3.mp4" muted playsinline preload="metadata" style="width:100%;height:100%;object-fit:cover;pointer-events:none;" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0;"></video>
+          <div class="play-overlay"><div class="play-icon">▶</div></div>
+        </div>
+        <p class="vid-label">Video 3</p>
+      </div>
+      <div class="vid-item">
+        <div class="video-circle" onclick="openVideo('videos/video4.mp4')" style="border-color:rgba(244,114,182,0.5);">
+          <video src="videos/video4.mp4" muted playsinline preload="metadata" style="width:100%;height:100%;object-fit:cover;pointer-events:none;" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0;"></video>
+          <div class="play-overlay"><div class="play-icon">▶</div></div>
+        </div>
+        <p class="vid-label">Video 4</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Video Modal -->
+<div class="vid-modal" id="vidModal">
+  <button class="vid-close" onclick="closeVideo()">✕</button>
+  <video id="modalVideo" controls></video>
+</div>
+
+<!-- ABOUT -->
+<section>
+  <div class="about-section">
+    <span class="sec-label">Who She Is</span>
+    <h2 class="sec-title">About Salwa 💖</h2>
+    <div class="about-grid">
+      <div class="about-card">
+        <span class="about-card-icon">🕊️</span>
+        <div class="about-card-title">The Angel</div>
+        <p class="about-card-text">You’re the kind of person who feels everything deeply. Even small things can upset you sometimes, but your heart is too soft to stay angry for long.</p>
+      </div>
+      <div class="about-card">
+        <span class="about-card-icon">🌸</span>
+        <div class="about-card-title">The Cute Chaos</div>
+        <p class="about-card-text">You’re not just cute by looks — your personality is cute too. The little mood swings, random anger, and innocent care make you different in the best way.</p>
+      </div>
+      <div class="about-card">
+        <span class="about-card-icon">💖</span>
+        <div class="about-card-title">The Pure Heart</div>
+        <p class="about-card-text">No matter how angry you get, your heart is genuinely beautiful. You always care, support, and stay there for the people who matter to you.</p>
+      </div>
+      <div class="about-card">
+        <span class="about-card-icon">🌙</span>
+        <div class="about-card-title">The Sensitive Soul</div>
+        <p class="about-card-text">You get hurt easily because your emotions are real. But even with all that softness, you still choose kindness instead of hurting others.</p>
+      </div>
+       <div class="about-card">
+        <span class="about-card-icon">✨</span>
+        <div class="about-card-title">The Rare One</div>
+        <p class="about-card-text">In a world full of fake people, your honesty and loyalty feel rare. Your presence alone feels special.</p>
+      </div>
+       <div class="about-card">
+        <span class="about-card-icon">🤍</span>
+        <div class="about-card-title">Thank You</div>
+        <p class="about-card-text">Thank you for being such a good friend to me. Having you in my life truly means a lot.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SURPRISE BTN -->
+<div class="surprise-section">
+  <button class="surprise-btn" onclick="openSurprise()">🎁 Haya Click Ko</button>
+  <span class="surprise-hint">something special is waiting for you</span>
+</div>
+
+<!-- SURPRISE PAGE -->
+<div id="surprisePage">
+  <div class="sp-particles" id="spParticles"></div>
+  <button class="sp-close" onclick="closeSurprise()">✕</button>
+
+  <div class="sp-inner">
+    <span class="sp-bloom">🌸</span>
+
+    <p class="sp-for">For You,</p>
+    <h2 class="sp-heading">Salwa Hussain</h2>
+
+    <div class="sp-poem" id="poem">
+      <span>You are the kind of person</span>
+      <span>who makes everything feel peaceful and light,</span>
+
+      <span class="sp-poem-pink">You are the softest soul</span>
+      <span class="sp-poem-pink">with the purest heart.</span>
+
+      <span>&nbsp;</span>
+
+      <span>Your little anger is cute sometimes,</span>
+      <span>but your care always feels special.</span>
+
+      <span>You get upset easily</span>
+      <span>because your emotions are real.</span>
+
+      <span>&nbsp;</span>
+
+      <span class="sp-poem-pink">In a world full of fake people,</span>
+      <span class="sp-poem-pink">your honesty and loyalty feel rare.</span>
+
+      <span>You are truly one of those people</span>
+      <span>who stay in someone’s heart forever. 🌸</span>
+    </div>
+
+    <div class="sp-divider"></div>
+
+    <div class="sp-message-box">
+      <span class="sp-msg-label">A Message From The Heart</span>
+
+      <p class="sp-msg-text">
+        Salwa, this page is specially made for you. Every little detail here was written while thinking about you.<br><br>
+
+        You are honestly one of the sweetest and most caring people I know. Even your random anger and mood swings somehow feel cute because deep down, your heart is very soft and pure.<br><br>
+
+        Thank you for being such a good friend to me. Your support, care, and presence truly mean a lot. Talking to you always feels comforting and peaceful.<br><br>
+
+        Never change the way you are, because people like you are genuinely rare. And yeah… love you for being you. 🤍
+      </p>
+    </div>
+  </div>
+</div>
+    <p class="sp-footer-name">— Tumhara Dost Zaidi🤍</p>
+    <p class="sp-hearts">🌸 ✨ 💖 ✨ 🌸</p>
+  </div>
+</div>
+
+<footer>
+  <p class="footer-name">Salwa Hussain — Forever Iconic 🌸</p>
+</footer>
+
+<script>
+// Custom cursor
+const cur = document.getElementById('cursor');
+const trail = document.getElementById('cursorTrail');
+document.addEventListener('mousemove', e => {
+  cur.style.left = (e.clientX - 6) + 'px';
+  cur.style.top = (e.clientY - 6) + 'px';
+  setTimeout(() => {
+    trail.style.left = (e.clientX - 15) + 'px';
+    trail.style.top = (e.clientY - 15) + 'px';
+  }, 60);
+});
+
+// Floating particles
+function makeParticles(el, count) {
+  const colors = ['#f472b6','#fce7f3','#fbcfe8','#f9a825','#be185d','#fff'];
+  for (let i = 0; i < count; i++) {
+    const p = document.createElement('div');
+    p.className = 'p';
+    const s = 2 + Math.random() * 5;
+    p.style.cssText = `left:${Math.random()*100}%;width:${s}px;height:${s}px;background:${colors[Math.floor(Math.random()*colors.length)]};animation-duration:${5+Math.random()*10}s;animation-delay:${Math.random()*8}s;`;
+    el.appendChild(p);
+  }
+}
+makeParticles(document.getElementById('particles'), 50);
+
+// Memory slideshow — dynamic dots for any number of slides
+let curSlide = 0;
+const slides = document.querySelectorAll('.mem-slide');
+const navEl = document.getElementById('memNav');
+
+// Build dots dynamically
+slides.forEach((_, i) => {
+  const btn = document.createElement('button');
+  btn.className = 'mem-dot' + (i === 0 ? ' active' : '');
+  btn.onclick = () => goSlide(i);
+  navEl.appendChild(btn);
+});
+
+let mdots = () => document.querySelectorAll('.mem-dot');
+let auto = setInterval(() => changeSlide(1), 3500);
+
+function goSlide(n) {
+  slides[curSlide].classList.remove('active');
+  mdots()[curSlide].classList.remove('active');
+  curSlide = n;
+  slides[curSlide].classList.add('active');
+  mdots()[curSlide].classList.add('active');
+  clearInterval(auto);
+  auto = setInterval(() => changeSlide(1), 3500);
+}
+function changeSlide(d) { goSlide((curSlide + d + slides.length) % slides.length); }
+
+// Video modal
+function openVideo(url) {
+  const m = document.getElementById('vidModal');
+  const v = document.getElementById('modalVideo');
+  v.src = url;
+  m.classList.add('open');
+  v.play().catch(() => {});
+}
+function closeVideo() {
+  const m = document.getElementById('vidModal');
+  const v = document.getElementById('modalVideo');
+  m.classList.remove('open');
+  v.pause(); v.src = '';
+}
+
+// About cards reveal
+const obs = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 120);
+  });
+}, { threshold: 0.15 });
+document.querySelectorAll('.about-card').forEach(c => obs.observe(c));
+
+// Confetti
+function launchConfetti() {
+  const cols = ['#f472b6','#fce7f3','#f9a825','#be185d','#fff','#fbcfe8'];
+  for (let i = 0; i < 90; i++) {
+    const c = document.createElement('div');
+    c.className = 'confetti-piece';
+    c.style.cssText = `left:${Math.random()*100}vw;top:-10px;background:${cols[Math.floor(Math.random()*cols.length)]};width:${6+Math.random()*8}px;height:${6+Math.random()*8}px;border-radius:${Math.random()>.5?'50%':'2px'};animation-duration:${1.5+Math.random()*2}s;animation-delay:${Math.random()*.8}s;`;
+    document.body.appendChild(c);
+    setTimeout(() => c.remove(), 3500);
+  }
+}
+
+// Surprise page
+function openSurprise() {
+  const pg = document.getElementById('surprisePage');
+  pg.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  launchConfetti();
+  makeParticles(document.getElementById('spParticles'), 60);
+  setTimeout(() => {
+    document.querySelectorAll('#poem span').forEach((s, i) => {
+      setTimeout(() => s.classList.add('show'), i * 220);
+    });
+  }, 500);
+}
+function closeSurprise() {
+  document.getElementById('surprisePage').classList.remove('open');
+  document.body.style.overflow = '';
+  document.getElementById('spParticles').innerHTML = '';
+  document.querySelectorAll('#poem span').forEach(s => s.classList.remove('show'));
+}
+</script>
+</body>
+</html>
